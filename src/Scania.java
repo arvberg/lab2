@@ -54,7 +54,7 @@ public class Scania extends Cars implements HasFlatbed {
         super.startEngine();
     }
 
-    @Override
+    @Override //Placeholder
     protected double speedFactor() {
         return 1;
     }

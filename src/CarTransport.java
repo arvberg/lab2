@@ -73,9 +73,7 @@ public class CarTransport extends Cars implements HasFlatbed {
 
     @Override
     public void move() {
-        if (isRampDown) {
-            throw new IllegalArgumentException("Can't move vehicle while the ramp is down.");
-        }
+        checkRamp();
         super.move();
         for (Cars car : loadedCars) {
             car.setPosition(this.getPosition());

@@ -84,6 +84,12 @@ public class CarTransportTest {
     }
 
     @Test
+    void moveWhileRampLowered(){
+        carTransport.lowerRamp();
+        assertThrows(IllegalArgumentException.class, () -> carTransport.move());
+    }
+
+    @Test
     void addCarExceedingCapacity() {
         carTransport.lowerRamp();
         for (int i = 0; i < 6; i++) {
@@ -129,4 +135,11 @@ public class CarTransportTest {
         assertThrows(IllegalArgumentException.class, () -> carTransport2.addCar(volvo240));
     }
 
+    @Test
+    void addMovingCar(){
+        carTransport.lowerRamp();
+        volvo240.startEngine();
+        assertThrows(IllegalArgumentException.class, () -> carTransport.addCar(volvo240));
+
+    }
 }
